@@ -1,0 +1,55 @@
+/* css/sections/_origins.css */
+
+/* Импорт шрифтов */
+@import url('https://fonts.googleapis.com/css2?family=Bad+Script&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400&display=swap');
+
+
+.origins {
+  background-color: #094b0c;
+  background-image: url('../../images/textures/chalkboard.png'); /* Путь к изображению */
+  background-repeat: repeat; /* Повторяется */
+  background-size: auto; /* Размер авто */
+  padding: 60px 20px;
+  color: #F8F8F8; /* Убедитесь, что это светлый цвет для текста на темном фоне */
+}
+
+.origins-content {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'IBM Plex Sans', sans-serif; /* Применяем IBM Plex Sans к основному контенту */
+  line-height: 1.6;
+}
+
+.origins-quote {
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: 'Bad Script', cursive; /* Применяем Bad Script к цитате */
+  font-size: 1.4rem;
+  position: relative;
+}
+
+.origins-quote footer {
+  margin-top: 15px;
+  font-size: 1.2rem;
+  font-family: 'Bad Script', cursive; /* Применяем Bad Script к футеру цитаты (имени) */
+}
+
+.origins-text {
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+
+
+/* Адаптивность (если нужна, добавьте сюда позже) */
+
+.chalk-particle {
+  position: absolute;
+  background-color: rgba(248, 248, 248, 0.8);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 1;
+  z-index: 10;
+  animation: fallAndFade 0.8s forwards ease-out;
+}
