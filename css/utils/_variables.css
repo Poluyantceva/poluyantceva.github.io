@@ -1,0 +1,12 @@
+:root {
+  --color-paper: #FFF8EE;
+  --color-terracotta: #E2725B;
+  --color-ochre: #D4A017;
+  --color-graphite: #3A3A3A;
+  --color-graphite-light: rgba(58, 58, 58, 0.2);
+  --gold-light: #F9E076;
+  --gold-glow: rgba(248, 228, 113, 0.6);
+  --color-dark-blue: #1C2F4D; /* Благородный, глубокий, насыщенный синий для фона секции */
+  --color-star-glow: #F0F8FF; /* Яркий, почти белый свет для звезд и свечения */
+  --color-figure-light: rgba(173, 216, 230, 0.2); /* Очень легкий голубой для полупрозрачных фигур */
+}
