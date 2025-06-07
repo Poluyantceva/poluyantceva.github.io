@@ -1,0 +1,14 @@
+/* css/utils/_reset.css */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'IBM Plex Sans', sans-serif; /* Базовый шрифт для всего body */
+  color: var(--color-graphite); /* Базовый цвет текста */
+  overflow-x: hidden;
+  line-height: 1.6;
+}
