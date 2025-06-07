@@ -1,0 +1,372 @@
+/* css/sections/_format.css */
+
+/* Основные стили */
+.format {
+  position: relative;
+  overflow: hidden; /* Важно, чтобы скрывать элементы, выходящие за пределы блока */
+}
+
+.format-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: auto; 
+}
+
+/* Левая колонка - терракота */
+.format-left {
+  background-color: var(--color-terracotta);
+  padding: 40px 40px;
+  color: var(--color-paper);
+  
+}
+
+.format-title {
+  font-family: 'Old Standard TT', serif;
+  font-size: 2.2rem; /* Унифицированный размер для основных заголовков */
+  line-height: 1.2; /* Унифицированный интервал для заголовков */
+  margin-bottom: 20px;
+}
+
+.format-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.format-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.format-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  filter: invert(1);
+}
+
+/* Правая колонка - бумага */
+/* css/sections/_format.css */
+
+/* ... (Ваши существующие стили для .format, .format-container, .format-left, .format-title, .format-list, .format-item, .format-icon) ... */
+
+/* Правая колонка - бумага */
+.format-right {
+  background-color: var(--color-paper);
+  background-image: 
+  /* Первый градиент: золото к терракоте, еле заметный, легкий угол */
+  linear-gradient(45deg, rgba(249, 225, 118, 0.95) 0%, rgba(226, 114, 91, 0.95) 100%),
+  /* Второй градиент: охра к золоту, другой угол, еще более тонкий */
+  linear-gradient(-45deg, rgba(212, 160, 23, 0.85) 0%, rgba(248, 228, 113, 0.85) 100%),
+  url('../../images/textures/paper.png');
+  
+  background-blend-mode: overlay, overlay, multiply; /* Режимы наложения для эффекта */
+  background-repeat: repeat, repeat, repeat;
+  background-size: cover, cover, auto;
+  padding: 40px 40px;
+  position: relative;
+  min-height: auto; /* УВЕЛИЧИВАЕМ ВЫСОТУ, чтобы дать больше пространства для широкой S */
+}
+
+.algorithm-title {
+  font-family: 'Old Standard TT', serif;
+  color: var(--color-graphite);
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 2.2rem; /* Идентичный размер */
+  line-height: 1.2; /* Идентичный интервал */
+}
+
+.algorithm-steps {
+  position: relative;
+  height: 100%;
+  min-height: auto; 
+  padding-bottom: 20px;
+}
+
+/* --- ПОЗИЦИОНИРОВАНИЕ `.step` ДЛЯ БОЛЕЕ ШИРОКОЙ И ПЛАВНОЙ S-ОБРАЗНОЙ ФОРМЫ --- */
+.step {
+  position: absolute;
+  width: 45%; /* Ширина текстового блока */
+  font-family: 'IBM Plex Sans', sans-serif;
+  color: var(--color-graphite);
+  text-align: center; /* Центрируем текст внутри самого шага */
+}
+
+.line-dot {
+  position: absolute;
+  width: 10px; /* Размер кружочка */
+  height: 10px; /* Размер кружочка */
+  background-color: var(--gold-light); /* Охристый цвет */
+  border-radius: 50%; /* Делаем круглым */
+  z-index: 1; /* Помещаем под текст SVG-линию */
+  pointer-events: none; /* Не реагирует на клики */
+  /* Важно: JS будет задавать top и left, а эта трансформация их центрирует */
+  transform: translate(-50%, -50%); 
+
+  box-shadow: 
+  0 0 4px 1px rgba(245, 204, 127, 0.8),   /* Ближе к кружочку, почти непрозрачный охристый */
+  0 0 10px 4px rgba(236, 211, 127, 0.5),  /* Средний слой, полупрозрачный */
+  0 0 20px 8px rgba(204, 119, 34, 0.2); 
+
+}
+
+.step-content {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  line-height: 1.6;
+  position: relative; 
+  z-index: 2;
+}
+
+.step-content p {
+  margin: 0;
+}
+
+/* --- БОЛЕЕ ШИРОКОЕ И ПЛАВНОЕ S-ОБРАЗНОЕ ПОЗИЦИОНИРОВАНИЕ --- */
+/* top: более равномерно распределяем по высоте, left/right: увеличиваем отступы */
+.step[data-step="1"] {
+  top: 7%;
+  left: 10%; /* Сдвигаем еще дальше влево для ширины */
+}
+
+.step[data-step="2"] {
+  top: 25%; /* Более равномерный шаг */
+  right: 10%; /* Сдвигаем еще дальше вправо для ширины */
+}
+
+.step[data-step="3"] {
+  top: 45%; /* Центральная точка */
+  left: 10%; /* Снова далеко влево */
+}
+
+.step[data-step="4"] {
+  top: 65%; /* Более равномерный шаг */
+  right: 10%; /* Снова далеко вправо */
+}
+
+.step[data-step="5"] {
+  top: 85%; /* Завершение S-кривой внизу */
+  left: 10%;
+}
+
+
+/* Адаптив */
+@media (max-width: 768px) {
+  /* ... (Все стили заголовков и текста, которые мы только что унифицировали, остаются без изменений) ... */
+  .format-title {
+      font-size: 1.8rem; line-height: 1.3; text-align: center;
+  }
+  .algorithm-title {
+      font-size: 1.8rem; line-height: 1.3; /* text-align: center; */
+  }
+  .format-item p {
+      font-size: 1rem; line-height: 1.5;
+  }
+  .step-content p {
+      font-size: 0.95rem; line-height: 1.5;
+  }
+
+  .format-right {
+      min-height: auto; /* Увеличиваем минимальную высоту для мобильных, если нужно */
+  }
+
+  .algorithm-steps {
+      min-height: auto; /* Увеличиваем минимальную высоту для мобильных */
+  }
+
+  /* --- АДАПТИВНОЕ ПОЗИЦИОНИРОВАНИЕ ШАГОВ (ВЕРТИКАЛЬНОЕ) --- */
+  .step {
+      width: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+  }
+  
+  /* Эти top значения остаются такими же, чтобы сохранить вертикальное расположение */
+  .step[data-step="1"] { top: 5%; }
+  .step[data-step="2"] { top: 25%; }
+  .step[data-step="3"] { top: 45%; }
+  .step[data-step="4"] { top: 65%; }
+  .step[data-step="5"] { top: 85%; }
+}
+
+@media (max-width: 480px) {
+  /* ... (Все стили заголовков и текста для очень маленьких экранов остаются без изменений) ... */
+  .format-title {
+      font-size: 1.6rem; line-height: 1.4;
+  }
+  .algorithm-title {
+      font-size: 1.6rem; line-height: 1.4;
+  }
+  .format-item p {
+      font-size: 0.9rem; line-height: 1.4;
+  }
+  .step-content p {
+      font-size: 0.85rem; line-height: 1.4;
+  }
+
+  .step {
+      width: 90%;
+  }
+  /* Эти top значения остаются такими же, чтобы сохранить вертикальное расположение */
+  .step[data-step="1"] { top: 5%; }
+  .step[data-step="2"] { top: 23%; }
+  .step[data-step="3"] { top: 41%; }
+  .step[data-step="4"] { top: 59%; }
+  .step[data-step="5"] { top: 77%; }
+}
+
+ 
+/* Адаптив */
+@media (max-width: 768px) {
+  .format-container {
+      grid-template-columns: 1fr;
+      min-height: auto;
+  }
+
+  .format-left,
+  .format-right {
+      padding: 40px 20px;
+  }
+
+  .format-right {
+      min-height: 400px;
+  }
+
+  /* ЗАГОЛОВКИ - РАЗМЕРЫ И ИНТЕРВАЛЫ + ЦЕНТРИРОВАНИЕ */
+  .format-title {
+      font-size: 1.8rem;
+      line-height: 1.3;
+      text-align: center;
+  }
+
+  .algorithm-title {
+      font-size: 1.4rem;
+      line-height: 1.4;
+      /* text-align: center; - уже есть */
+  }
+
+  .algorithm-steps {
+      min-height: auto;
+  }
+
+  /* --- АДАПТИВНОЕ ПОЗИЦИОНИРОВАНИЕ ШАГОВ (ВЕРТИКАЛЬНОЕ) --- */
+  .step {
+      width: 80%; /* Увеличиваем ширину на мобильных */
+      left: 50%; /* Центрируем по горизонтали */
+      transform: translateX(-50%); /* Точное центрирование */
+      text-align: center; /* Текст тоже по центру */
+  }
+  
+  .step[data-step="1"] { top: 5%; }
+  .step[data-step="2"] { top: 25%; }
+  .step[data-step="3"] { top: 45%; }
+  .step[data-step="4"] { top: 65%; }
+  .step[data-step="5"] { top: 85%; }
+
+  /* ТЕКСТЫ - РАЗМЕРЫ И ИНТЕРВАЛЫ */
+  .format-item p {
+      font-size: 1rem;
+      line-height: 1.5;
+  }
+  .step-content p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  /* ЗАГОЛОВКИ - РАЗМЕРЫ И ИНТЕРВАЛЫ */
+  .format-title {
+      font-size: 1.6rem;
+      line-height: 1.4;
+  }
+  .algorithm-title {
+      font-size: 1.2rem;
+      line-height: 1.5;
+  }
+
+  /* ТЕКСТЫ - РАЗМЕРЫ И ИНТЕРВАЛЫ */
+  .format-item p {
+      font-size: 0.9rem;
+      line-height: 1.4;
+  }
+  .step-content p {
+      font-size: 0.85rem;
+      line-height: 1.4;
+  }
+
+  /* ПОЗИЦИОНИРОВАНИЕ ШАГОВ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ */
+  .step {
+      width: 90%; /* Еще увеличиваем ширину */
+      /* left: 50%; transform: translateX(-50%); - наследуется от 768px */
+  }
+  /* Можно дополнительно скорректировать top, если нужно, чтобы избежать наложений */
+  .step[data-step="1"] { top: 5%; }
+  .step[data-step="2"] { top: 23%; } /* Чуть ближе друг к другу */
+  .step[data-step="3"] { top: 41%; }
+  .step[data-step="4"] { top: 59%; }
+  .step[data-step="5"] { top: 77%; }
+}
+
+
+/* Контейнер для текста и колокольчика */
+.format-left .program-start-and-bell-section {
+  text-align: center; /* Центрируем всё содержимое */
+  margin-top: 60px; /* Отступ сверху от списка */
+  margin-bottom: 20px; /* Отступ снизу красного блока */
+}
+
+/* Стили для объединенной надписи "Старт следующей программы 16 ИЮНЯ" */
+.format-left .program-start-text-unified {
+  font-family: 'Bad Script', cursive; /* СТРОГО Bad Script */
+  font-size: 2.2rem; /* СТРОГО 1.4rem */
+  color: var(--color-paper); /* СТАНДАРТНЫЙ БЕЛЫЙ ЦВЕТ */
+  line-height: 1.2; /* Межстрочный интервал для аккуратности */
+  margin-bottom: 20px; /* Отступ между надписью и колокольчиком */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Тень для объема, если нужна, иначе удалите */
+}
+
+/* Стили для SVG-иконки колокольчика */
+.format-left .bell-icon {
+  width: 80px; /* Размер иконки (можно настроить) */
+  height: auto; /* Сохраняем пропорции */
+   filter: invert(1); /* Делает черный SVG белым. Удалите, если ваш SVG уже белый или другого цвета. */
+   
+
+
+/* --- Адаптивность для этих элементов --- */
+
+@media (max-width: 768px) {
+  .format-left .program-start-and-bell-section {
+      margin-top: 40px;
+      margin-bottom: 20px;
+  }
+  .format-left .program-start-text-unified {
+      font-size: 1.2rem; /* Адаптируем размер шрифта на меньших экранах */
+      margin-bottom: 20px;
+  }
+  .format-left .bell-icon {
+      width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .format-left .program-start-and-bell-section {
+      margin-top: 30px;
+      margin-bottom: 20px;
+  }
+  .format-left .program-start-text-unified {
+      font-size: 1.1rem; /* Ещё уменьшаем на очень маленьких экранах */
+      margin-bottom: 20px;
+  }
+  .format-left .bell-icon {
+      width: 50px;
+  }
+}
